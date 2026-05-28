@@ -1,0 +1,20 @@
+{
+  "name": "Flask in Alpine",
+  "image": "python:3.11-alpine",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  },
+  "onCreateCommand": "apk update && apk add --no-cache git sqlite openssh-client",
+  "postCreateCommand": "pip install flask",
+  "forwardPorts": [5000],
+  "portsAttributes": {
+    "5000": {
+      "label": "Flask Web Server",
+      "onAutoForward": "notify"
+    }
+  }
+}
